@@ -4,26 +4,26 @@
     <form>
       <div class="form-group">
         <label for="name">英雄大名</label>
-        <input type="text" class="form-control" id="name" placeholder="name" v-model="name">
+        <input type="text" class="form-control" id="name" placeholder="name" v-model="formData.name">
       </div>
       <div class="form-group">
         <label for="gender">性别</label>
-        <input type="text" class="form-control" id="gender" placeholder="gender" v-model="gender">
+        <input type="text" class="form-control" id="gender" placeholder="gender" v-model="formData.gender">
       </div>
       <div class="form-group">
         <label for="fath">最牛B的事情</label>
-        <input type="text" class="form-control" id="fath" placeholder="fath" v-model="fath">
+        <input type="text" class="form-control" id="fath" placeholder="fath" v-model="formData.fath">
       </div>
       <div class="form-group">
         <label for="rule">身份</label>
-        <input type="text" class="form-control" id="rule" placeholder="rule" v-model="rule">
+        <input type="text" class="form-control" id="rule" placeholder="rule" v-model="formData.rule">
       </div>
       <div class="form-group">
         <label for="hobby">技能</label>
-        <input type="text" class="form-control" id="hobby" placeholder="hobby" v-model="hobby">
+        <input type="text" class="form-control" id="hobby" placeholder="hobby" v-model="formData.hobby">
       </div>
       
-      <button type="button" class="btn btn-success" @click='addHero'>Submit</button>
+      <button class="btn btn-success" @click.prevent="updata" >提交</button>
     </form>
   </div>
 </template>
@@ -31,7 +31,53 @@
 
 <script>
 export default {
-  name:'HeroUpdate'
+  name:'HeroUpdate',
+  props:['id'],
+  data(){
+    return {
+      formData:{
+        name:'',
+        gender:'',
+        fath:'',
+        rule:'',
+        hobby:''
+      }
+    }
+  },
+  mounted(){
+    this.getById();
+  },
+  methods: {
+    getById(){
+      //请求
+      this.$http
+        .get('/heros/'+this.id)
+        .then(res=>{
+          const {status, data} = res
+          if(status === 200){
+            this.formData = data
+          }
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+    },
+    //                            发起提交请求
+    updata(){
+      this.$http
+        .put(`/heros/${this.id}`,this.formData)
+        .then(res=>{
+          if(res.status === 200){
+            this.$router.push({name:'herolist'})
+          }else{
+            console.log('更新错误')
+          }
+        })
+        .catch(err=>{
+          console.log(err);
+        })
+    }
+  },
 }
 </script>
 
