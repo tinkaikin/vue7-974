@@ -1,0 +1,5 @@
+1.前提你安装了 json-server
+
+2.在serverdb 文件夹 下面打开cmd  运行  $  json-server --watch db.json
+
+3.有显示笑脸 和 localhost:3000/hero   就说明请求数据库,开启了
