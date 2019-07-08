@@ -10,9 +10,15 @@ Vue.use(Router)
 
 
 export default new Router({
+  // 选项
+  // 当浏览器地址栏中的路由地址 #/hero 和 router-link生成的a标签的href 精确匹配的时候，添加类样式
+  // linkExactActiveClass: 'active',
+
+  // 当浏览器地址栏中的路由地址 #/hero/add 包含router-link生成的a标签的href地址，添加类样式
+  linkActiveClass: 'active',
   routes: [
-    { path: '/', redirect: '/herolist' },
-    { name: 'herolist', path: '/herolist', component: HeroList },
+    { path: '/', redirect: '/hero' },
+    { name: 'herolist', path: '/hero', component: HeroList },
     
     { name: 'heroupdate', path: '/hero/update/:id', component: HeroUpdate, props: true },
     
