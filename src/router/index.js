@@ -1,24 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
-import AList from '@/components/A-List.vue';
-import AAdd from '@/components/A-Add.vue';
-import AReports from '@/components/A-Reports.vue';
+// import AList from '@/components/A-List.vue';
+import HeroList from '../views/hero/HeroList.vue'
+import HeroAdd from '../views/hero/HeroAdd.vue';
+import HeroUpdate from '../views/hero/HeroUpdate.vue';
 
 Vue.use(Router)
 
 
 export default new Router({
   routes: [
-    { name: 'add', path: '/add', component: AAdd },
-    {path:'/',redirect:'/overview'},
-    {
-      name: 'overview',
-      path: '/overview',
-      component: AList
-    },
+    { path: '/', redirect: '/herolist' },
+    { name: 'herolist',path: '/herolist',component: HeroList },
+    
+    { name: 'heroupdate', path: '/hero/update', component: HeroUpdate },
+    
+    { name: 'heroadd', path: '/hero/add', component: HeroAdd },
 
-    {name: 'reports', path: '/reports', component: AReports},
     {
       name: 'analytics', path: '/analytics', component: {   //这里等待模板替换
         template: `

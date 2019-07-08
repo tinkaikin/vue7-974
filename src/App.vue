@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <!-- 头部组件                                         -->
-    <app-navbar></app-navbar>
+    <app-nav-bar></app-nav-bar>
     <div class="container-fluid">
       <div class="row">
         <!--  侧边栏组件                           -->
-        <app-sidebar></app-sidebar>
+        <app-side-bar></app-side-bar>
 
         <!-- 内容区域                                      -->
         <router-view/>
@@ -18,13 +18,11 @@
 <script>
 import AppNavBar from './components/AppNavBar.vue';           
 import AppSideBar from './components/AppSideBar.vue';
-// import AMain from './components/A-Main.vue';
 export default {
   name: 'App',
   components:{
     AppNavBar,
     AppSideBar,
-    // AMain,
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <!-- name : Main                      -->
+  <!-- name : HeroList                      -->
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="sub-header">Hero List</h2>
-    <router-link class="btn btn-success" to="add">Add</router-link>
+    <router-link class="btn btn-success" :to="{name:'heroadd'}">Add</router-link>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -44,7 +44,7 @@ hobby: "送人头"
 
 <script>
 export default {
-  name: "Main",
+  name: "HeroList",
   data(){
     return {
       list:[],
