@@ -12,9 +12,9 @@ Vue.use(Router)
 export default new Router({
   routes: [
     { path: '/', redirect: '/herolist' },
-    { name: 'herolist',path: '/herolist',component: HeroList },
+    { name: 'herolist', path: '/herolist', component: HeroList },
     
-    { name: 'heroupdate', path: '/hero/update', component: HeroUpdate },
+    { name: 'heroupdate', path: '/hero/update/:id', component: HeroUpdate, props: true },
     
     { name: 'heroadd', path: '/hero/add', component: HeroAdd },
 

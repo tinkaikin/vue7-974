@@ -31,9 +31,9 @@ hobby: "送人头"
             <td>{{item.fath}}</td>
             <td>{{item.rule}}</td>
             <td>
-              <a href="edit.html">edit</a>
+              <router-link :to="'/hero/update/'+item.id">更改</router-link>
               &nbsp;&nbsp;
-              <a href="javascript:;" @click="deleteHero(item.id)">delete</a>
+              <a href="javascript:;" @click.prevent="deleteHero(item.id)">delete</a>
             </td>
           </tr>
         </tbody>

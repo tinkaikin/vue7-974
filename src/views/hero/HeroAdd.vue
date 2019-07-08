@@ -52,7 +52,7 @@ export default {
         hobby:this.hobby
       }).then(res=>{
         if(res.status === 201){
-          this.$router.push({path:'overview'})
+          this.$router.push({path:'/herolist'})
         }
       }).catch(err=>{
         console.log(err)
